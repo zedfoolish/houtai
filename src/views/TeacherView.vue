@@ -58,7 +58,7 @@
 <!-- 主表格 -->
   <el-table
       :data="teachers"
-      size="mini"
+      size="small"
       style="width: 100%;"
       @cell-mouse-enter="handleCellEnter"
       @cell-mouse-leave="handleCellLeave"
@@ -113,8 +113,8 @@
         label="操作"
         class="leng">
         <template slot-scope="scope">
-          <el-button @click="handleSaveClick(scope.row)" type="primary" plain size="mini">保存</el-button>
-          <el-button type="danger" plain size="mini" @click="handleDeleteClick(scope.row)">删除</el-button>
+          <el-button @click="handleSaveClick(scope.row)" type="primary" plain size="small">保存</el-button>
+          <el-button type="danger" plain size="small" @click="handleDeleteClick(scope.row)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
