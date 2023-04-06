@@ -25,9 +25,9 @@
     <el-dialog title="新添数据信息" :visible.sync="dialogFormVisible"  @close="resetForm('addForm')">
       <h4> 要记得填写内容噢</h4>
       <el-form :model="teacher" ref='addForm'>
-        <el-form-item label="序号" :label-width="formLabelWidth">
+        <!-- <el-form-item label="序号" :label-width="formLabelWidth">
           <el-input v-model="teacher.id" autocomplete="off"></el-input>
-        </el-form-item>
+        </el-form-item> -->
 
         <el-form-item label="名称" :label-width="formLabelWidth">
           <el-input v-model="teacher.name" autocomplete="off"></el-input>
@@ -131,6 +131,8 @@ import axios from "axios"
       handleClick(row) {
         console.log(row);
       }, 
+
+      // 清空新添表单
       resetForm(form){
         this.teacher.id='';
         this.teacher.name='';
@@ -151,13 +153,31 @@ import axios from "axios"
         console.log("confirm");
         console.log(this.teacher);
 
+        axios.post('http://8.130.32.153:8090/teachers', {
+          name: this.teacher.name,
+          imgUrl: this.teacher.imgUrl,
+          skill: this.teacher.skill,
+          intro: this.teacher.intro,
+      })
+      .then(response => {
+        console.log(response);
+        // alert("新添成功");
+        this.open3();
+        this.getlist();
+      })
+      .catch(error => {
+        console.log(error);
+      });
 
       },
+
+// 新添按钮
       addClick(){
-        console.log("add");
+        // console.log("add");
         this.dialogFormVisible = true;
       },
 
+// 可编辑表格
       /** 鼠标移入cell */
     handleCellEnter (row, column, cell, event) {
       const property = column.property
@@ -174,6 +194,8 @@ import axios from "axios"
         cell.querySelector('.item__txt').style.display = 'block'
       }
     },
+
+
     handleSaveClick(row){
       console.log(row)
       console.log(row.name)
@@ -195,6 +217,12 @@ import axios from "axios"
         console.log(error);
       });
     },
+    open3() {
+        this.$message({
+          message: '新添成功',
+          type: 'success'
+        });
+      },
     open2() {
         this.$message({
           message: '修改成功',
@@ -222,9 +250,9 @@ import axios from "axios"
         axios
           .get("http://8.130.32.153:8090/teachers")
           .then((response) =>{
-            console.log(response.data);
+            // console.log(response.data);
             this.teachers = response.data;
-            console.log("teachers=",this.teachers)
+            // console.log("teachers=",this.teachers)
           })
           .catch((error) =>{
             console.log(error);
