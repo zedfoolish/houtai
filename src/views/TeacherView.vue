@@ -21,7 +21,7 @@
 
 
         
-    <!-- 新添Form -->
+    <!-- 新添Form --> 
     <el-dialog title="新添数据信息" :visible.sync="dialogFormVisible"  @close="resetForm('addForm')">
       <h4> 要记得填写内容噢</h4>
       <el-form :model="teacher" ref='addForm'>
