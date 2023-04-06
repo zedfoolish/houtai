@@ -108,6 +108,18 @@ export default {
       handleClick(row) {
         console.log(row);
       }, 
+      // 加载动画
+      openFullScreen2() {
+        const loading = this.$loading({
+          lock: true,
+          text: 'Loading',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
+        setTimeout(() => {
+          loading.close();
+        }, 400);
+      },
 
       // 清空新添表单
       resetForm(form){
@@ -135,7 +147,7 @@ export default {
         .then(response => {
         console.log(response);
         // alert("新添成功");
-        alert(`请点击该条新建数据后的"保存按钮"去刷新加密效果噢`);
+      
         this.open3();
         this.getlist();
         
@@ -234,6 +246,7 @@ export default {
 
     },
     mounted(){
+      this.openFullScreen2();
       this.getlist();
     },  
     computed: {

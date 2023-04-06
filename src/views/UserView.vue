@@ -1,7 +1,7 @@
 <template>
   <div class="user"> 
    <h1>This is an user page</h1>
-
+      
        <!-- 左侧按钮 -->
        <el-row class="leftButton">
       <el-button type="primary" round  @click="addClick()">新添数据</el-button>
@@ -232,6 +232,11 @@ export default {
     },
     mounted(){
       this.getlist();
+      this.$message({
+          duration:2000,
+          type: 'warning',
+          message: '在新添用户后记得要点击“保存”按钮去使用加密功能噢',
+        });
     },  
     computed: {
       foodLabel () {

@@ -105,6 +105,18 @@ export default {
       handleClick(row) {
         console.log(row);
       }, 
+       // 加载动画
+       openFullScreen2() {
+        const loading = this.$loading({
+          lock: true,
+          text: 'Loading',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
+        setTimeout(() => {
+          loading.close();
+        }, 400);
+      },
 
       // 清空新添表单
       resetForm(form){
@@ -229,6 +241,7 @@ export default {
 
     },
     mounted(){
+      this.openFullScreen2();
       this.getlist();
     },  
     computed: {

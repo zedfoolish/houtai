@@ -212,10 +212,12 @@ export default {
       }
     },
     mounted(){
+      this.openFullScreen2();
       this.getlist();
       this.$message({
-              type: 'success ',
-              message: "在上传完视频后会有提示返回视频地址 要记得复制(O.o)..."
+              duration:2000,
+              type: 'warning',
+              message: '在上传完视频后会有提示返回视频地址 要记得复制(O.o)...'
             });
       
     },  
@@ -232,6 +234,18 @@ export default {
           console.log(this.rem);
 
       },     
+
+      openFullScreen2() {
+        const loading = this.$loading({
+          lock: true,
+          text: 'Loading',
+          spinner: 'el-icon-loading',
+          background: 'rgba(0, 0, 0, 0.7)'
+        });
+        setTimeout(() => {
+          loading.close();
+        }, 400);
+      },
       handleSuccess(res, file) {
           console.log("res.data=",res.data);
           alert("上传成功");
