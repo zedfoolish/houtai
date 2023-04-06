@@ -106,8 +106,8 @@ export default {
         console.log(row);
       }, 
 
-           // 清空新添表单
-           resetForm(form){
+      // 清空新添表单
+      resetForm(form){
 
         this.information.title='';
         this.information.content='';
@@ -248,14 +248,14 @@ export default {
       dialogTableVisible: false,
       dialogFormVisible: false,
       form: {
-          id: '',
+          // id: '',
           title: '',
           content: '',
 
         
         },
         formLabelWidth: '80px'
- 
+
 
 
       }

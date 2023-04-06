@@ -2,6 +2,49 @@
   <div class="user"> 
    <h1>user</h1>
 
+       <!-- 左侧按钮 -->
+       <el-row class="leftButton">
+      <el-button type="primary" round  @click="addClick()">新添数据</el-button>
+      <el-button type="primary" round @click="dialogTableVisible = true">查看详情</el-button>
+    </el-row>
+
+
+        <!-- 详情Table查看 -->
+        <el-dialog title="查看详情" :visible.sync="dialogTableVisible" class="dialog">
+      <el-table :data="users">
+        <el-table-column property="id" label="序号" class="leng"></el-table-column>
+        <el-table-column property="phone" label="手机号" class="leng"></el-table-column>
+        <el-table-column property="pass" label="密码" class="leng"></el-table-column>
+      
+      </el-table>
+    </el-dialog>
+
+            
+     <!-- 新添Form -->  
+     <el-dialog title="新添数据信息" :visible.sync="dialogFormVisible"  @close="resetForm('addForm')">
+      <h4> 要记得填写内容噢</h4>
+      <el-form :model="user" ref='addForm'>
+        <!-- <el-form-item label="序号" :label-width="formLabelWidth">
+          <el-input v-model="teacher.id" autocomplete="off"></el-input>
+        </el-form-item> -->
+
+        <el-form-item label="手机号" :label-width="formLabelWidth">
+          <el-input v-model="user.phone" autocomplete="off"></el-input>
+        </el-form-item>
+
+        <el-form-item label="密码" :label-width="formLabelWidth">
+          <el-input v-model="user.pass" autocomplete="off"></el-input>
+        </el-form-item>
+
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="cancel()">取 消</el-button>
+        <el-button type="primary" @click="confirm()">确 定</el-button>
+      </div>
+    </el-dialog>
+
+
+   <!-- 主表格 -->
    <el-table
       :data="users"
       size="mini"
@@ -63,6 +106,51 @@ export default {
         console.log(row);
       }, 
 
+      // 清空新添表单
+      resetForm(form){
+
+        this.user.phone='';
+        this.user.pass='';
+
+        // 关键就是这句话！
+        this.$refs[form].clearValidate();
+      },
+      cancel() {
+        this.dialogFormVisible = false;
+        console.log("cancel");
+
+      },
+      confirm(){
+        this.dialogFormVisible = false;
+        console.log("confirm");
+        console.log(this.user);
+
+        axios.post('http://8.130.32.153:8090/users', {
+          phone: this.user.phone,
+          pass: this.user.pass,
+      })
+        .then(response => {
+        console.log(response);
+        // alert("新添成功");
+        alert(`请点击该条新建数据后的"保存按钮"去刷新加密效果噢`);
+        this.open3();
+        this.getlist();
+        
+
+
+        })
+        .catch(error => {
+        console.log(error);
+        });
+
+      },
+
+      // 新添按钮
+      addClick(){
+        // console.log("add");
+        this.dialogFormVisible = true;
+      },
+
       /** 鼠标移入cell */
     handleCellEnter (row, column, cell, event) {
       const property = column.property
@@ -99,6 +187,12 @@ export default {
         console.log(error);
       });
     },
+    open3() {
+        this.$message({
+          message: '新添成功',
+          type: 'success'
+        });
+      },
     open2() {
         this.$message({
           message: '修改成功',
@@ -149,10 +243,19 @@ export default {
     data() {
       return {
         users:[],
+        user:{},
       
         // 下拉选项
       options: [],
-
+      dialogTableVisible: false,
+      dialogFormVisible: false,
+      form: {
+          // phone: '',
+          // pass: '',
+        
+        },
+        formLabelWidth: '80px'
+ 
 
       }
     }
@@ -164,4 +267,10 @@ export default {
  .leng {
     width:20%;
   }
+.leftButton{
+  float: left;
+}
+.el-dialog{
+  width: 1200px;
+}
 </style>

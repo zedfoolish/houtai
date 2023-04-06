@@ -2,6 +2,80 @@
   <div class="exercise"> 
     <h1>\exercise</h1>
 
+    <!-- 左侧按钮 -->
+    <el-row class="leftButton">
+      <el-button type="primary" round  @click="addClick()">新添数据</el-button>
+      <el-button type="primary" round @click="dialogTableVisible = true">查看详情</el-button>
+    </el-row>
+
+
+    <!-- 详情Table查看 -->
+    <el-dialog title="查看详情" :visible.sync="dialogTableVisible" class="dialog">
+      <el-table :data="exercises">
+        <el-table-column property="id" label="序号" class="leng"></el-table-column>
+        <el-table-column property="chapterId" label="章节id" class="leng"></el-table-column>
+        <el-table-column property="topic" label="题目" class="leng"></el-table-column>
+        <el-table-column property="correct" label="正确答案" class="leng"></el-table-column>
+        <el-table-column property="a" label="选项A" class="leng"></el-table-column>
+        <el-table-column property="b" label="选项B" class="leng"></el-table-column>
+        <el-table-column property="c" label="选项C" class="leng"></el-table-column>
+        <el-table-column property="d" label="选项D" class="leng"></el-table-column>
+        <el-table-column property="title" label="题库章节" class="leng"></el-table-column>
+      </el-table>
+    </el-dialog>
+
+
+        
+    <!-- 新添Form -->  
+    <el-dialog title="新添数据信息" :visible.sync="dialogFormVisible"  @close="resetForm('addForm')">
+      <h4> 要记得填写内容噢</h4>
+      <el-form :model="exercise" ref='addForm'>
+        <!-- <el-form-item label="序号" :label-width="formLabelWidth">
+          <el-input v-model="exercise.id" autocomplete="off"></el-input>
+        </el-form-item> -->
+
+        <el-form-item label="章节id" :label-width="formLabelWidth">
+          <el-input v-model="exercise.chapterId" autocomplete="off"></el-input>
+        </el-form-item>
+
+        <el-form-item label="题目" :label-width="formLabelWidth">
+          <el-input v-model="exercise.topic" autocomplete="off"></el-input>
+        </el-form-item>
+
+        <el-form-item label="正确答案" :label-width="formLabelWidth">
+          <el-input v-model="exercise.correct" autocomplete="off"></el-input>
+        </el-form-item>
+
+        <el-form-item label="选项A" :label-width="formLabelWidth">
+          <el-input v-model="exercise.a" autocomplete="off"></el-input>
+        </el-form-item>
+
+        <el-form-item label="选项B" :label-width="formLabelWidth">
+          <el-input v-model="exercise.b" autocomplete="off"></el-input>
+        </el-form-item>
+
+        <el-form-item label="选项C" :label-width="formLabelWidth">
+          <el-input v-model="exercise.c" autocomplete="off"></el-input>
+        </el-form-item>
+
+        <el-form-item label="选项D" :label-width="formLabelWidth">
+          <el-input v-model="exercise.d" autocomplete="off"></el-input>
+        </el-form-item>
+
+        <el-form-item label="题库章节" :label-width="formLabelWidth">
+          <el-input v-model="exercise.title" autocomplete="off"></el-input>
+        </el-form-item>
+     
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="cancel()">取 消</el-button>
+        <el-button type="primary" @click="confirm()">确 定</el-button>
+      </div>
+    </el-dialog>
+
+
+
+    <!-- 主表格 -->
     <el-table
       :data="exercises"
       size="mini"
@@ -114,6 +188,60 @@ import axios from "axios"
         console.log(row);
       }, 
 
+      // 清空新添表单
+      resetForm(form){
+        this.exercise.id='';
+        this.exercise.chapterId='';
+        this.exercise.topic='';
+        this.exercise.correct='';
+        this.exercise.a='';
+        this.exercise.b='';
+        this.exercise.c='';
+        this.exercise.d='';
+        this.exercise.title='';
+        
+        // 关键就是这句话！
+        this.$refs[form].clearValidate();
+      },
+      cancel() {
+       this.dialogFormVisible = false;
+       console.log("cancel");
+       
+      },
+      confirm(){
+        this.dialogFormVisible = false;
+        console.log("confirm");
+        console.log(this.exercise);
+
+        axios.post('http://8.130.32.153:8090/exercises', {
+          chapterId:  Number(this.exercise.chapterId),
+          topic: this.exercise.topic,
+          correct: this.exercise.correct,
+          a: this.exercise.a,
+          b: this.exercise.b,
+          c: this.exercise.c,
+          d: this.exercise.d,
+          title: this.exercise.title,
+      })
+      .then(response => {
+        console.log(response);
+        // alert("新添成功");
+        this.open3();
+        this.getlist();
+      })
+      .catch(error => {
+        console.log(error);
+      });
+
+      },
+
+// 新添按钮
+      addClick(){
+        // console.log("add");
+        this.dialogFormVisible = true;
+      },
+
+// 可编辑表格
       /** 鼠标移入cell */
     handleCellEnter (row, column, cell, event) {
       const property = column.property
@@ -155,6 +283,12 @@ import axios from "axios"
         console.log(error);
       });
     },
+    open3() {
+        this.$message({
+          message: '新添成功',
+          type: 'success'
+        });
+      },
     open2() {
         this.$message({
           message: '修改成功',
@@ -205,10 +339,26 @@ import axios from "axios"
     data() {
       return {
         exercises:[],
-      
+        exercise:{},
+        dialogTableVisible: false,
+        dialogFormVisible: false,
         // 下拉选项
       options: [],
-  
+
+        
+        form: {
+          // id: '',
+          chapterId: '',
+          topic: '',
+          correct: '',
+          a: '',
+          b: '',
+          c: '',
+          d: '',
+          title: '',
+        
+        },
+        formLabelWidth: '80px'
       }
     }
   }
@@ -217,5 +367,11 @@ import axios from "axios"
 <style>
   .leng {
     width:"100";
+  }
+  .leftButton{
+    float: left;
+  }
+  .el-dialog{
+    width: 1200px;
   }
 </style>
