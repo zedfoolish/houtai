@@ -11,13 +11,44 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
+    path: '/teacher',
+    name: 'teacher',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    component: () => import(/* webpackChunkName: "about" */ '../views/TeacherView.vue')
+  },
+  {
+    path: '/exercise',
+    name: 'exercise',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ExerciseView.vue')
+  },
+  {
+    path: '/user',
+    name: 'user',
+    component: () => import(/* webpackChunkName: "about" */ '../views/UserView.vue')
+  },
+  {
+    path: '/information',
+    name: 'information',
+    component: () => import(/* webpackChunkName: "about" */ '../views/InformationView.vue')
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: () => import(/* webpackChunkName: "about" */ '../views/AdminView.vue')
+  },
+  {
+    path: '/mycourse',
+    name: 'mycourse',
+    component: () => import(/* webpackChunkName: "about" */ '../views/MycourseView.vue')
+  },
+  {
+    path: '/course',
+    name: 'course',
+    component: () => import(/* webpackChunkName: "about" */ '../views/CourseView.vue')
+  },
+
 ]
 
 const router = new VueRouter({
