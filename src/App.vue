@@ -1,20 +1,18 @@
 <template>
   <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/teacher">讲师</router-link> |
+    <!-- <div class="loader"></div> -->
+   <!-- <nav> -->
+
+      <!-- <router-link to="/teacher">讲师</router-link> |
       <router-link to="/exercise">练习题</router-link>|
       <router-link to="/user">用户</router-link>|
       <router-link to="/information">招考信息</router-link>|
-      <!-- <router-link to="/admin">Admin</router-link>| -->
       <router-link to="/mycourse">我的课程</router-link>|
       <router-link to="/course">课程</router-link>
-    </nav>
+    </nav>  -->
 
-    <div class="loader"></div>
-
-    <br/> <br/>
     <router-view/>
+    
   </div>
 </template>
 
