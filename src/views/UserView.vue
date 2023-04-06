@@ -1,6 +1,6 @@
 <template>
   <div class="user"> 
-   <h1>user</h1>
+   <h1>This is an user page</h1>
 
        <!-- 左侧按钮 -->
        <el-row class="leftButton">
@@ -13,7 +13,7 @@
         <el-dialog title="查看详情" :visible.sync="dialogTableVisible" class="dialog">
       <el-table :data="users">
         <el-table-column property="id" label="序号" class="leng"></el-table-column>
-        <el-table-column property="phone" label="手机号" class="leng"></el-table-column>
+        <el-table-column property="phone" label="账号" class="leng"></el-table-column>
         <el-table-column property="pass" label="密码" class="leng"></el-table-column>
       
       </el-table>
@@ -28,12 +28,12 @@
           <el-input v-model="teacher.id" autocomplete="off"></el-input>
         </el-form-item> -->
 
-        <el-form-item label="手机号" :label-width="formLabelWidth">
-          <el-input v-model="user.phone" autocomplete="off"></el-input>
+        <el-form-item label="账号" :label-width="formLabelWidth">
+          <el-input v-model="user.phone" autocomplete="off"  placeholder="请输入账号"></el-input>
         </el-form-item>
 
         <el-form-item label="密码" :label-width="formLabelWidth">
-          <el-input v-model="user.pass" autocomplete="off"></el-input>
+          <el-input v-model="user.pass" autocomplete="off"  placeholder="请输入密码"></el-input>
         </el-form-item>
 
       </el-form>
@@ -63,7 +63,7 @@
       </el-table-column>
       <el-table-column
         prop="phone"
-        label="手机号"
+        label="账号"
         class="leng">
         <div class="item" slot-scope="scope">
           <el-input class="item__input" v-model="scope.row.phone" placeholder="请输入内容"></el-input>

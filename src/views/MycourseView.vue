@@ -1,9 +1,10 @@
 <template>
   <div class="mycourse">   
-    <div class="mycourse"> myexercise</div>
+    <h1> This is a mycourse page</h1>
 
-           <!-- 左侧按钮 -->
-           <el-row class="leftButton">
+
+    <!-- 左侧按钮 -->
+    <el-row class="leftButton">
       <el-button type="primary" round  @click="addClick()">新添数据</el-button>
       <el-button type="primary" round @click="dialogTableVisible = true">查看详情</el-button>
     </el-row>
@@ -29,11 +30,11 @@
         </el-form-item> -->
 
         <el-form-item label="用户id" :label-width="formLabelWidth">
-          <el-input v-model="mycourse.userId" autocomplete="off"></el-input>
+          <el-input v-model="mycourse.userId" autocomplete="off" placeholder="请输入用户id"></el-input>
         </el-form-item>
 
         <el-form-item label="课程id" :label-width="formLabelWidth">
-          <el-input v-model="mycourse.courseId" autocomplete="off"></el-input>
+          <el-input v-model="mycourse.courseId" autocomplete="off" placeholder="请输入课程id"></el-input>
         </el-form-item>
 
       </el-form>

@@ -1,6 +1,6 @@
 <template>
   <div class="information"> 
-    <h1> information\</h1>
+    <h1> This is a information page</h1>
 
     <!-- 左侧按钮 -->
     <el-row class="leftButton">
@@ -29,11 +29,11 @@
         </el-form-item> -->
 
         <el-form-item label="标题" :label-width="formLabelWidth">
-          <el-input v-model="information.title" autocomplete="off"></el-input>
+          <el-input v-model="information.title" autocomplete="off" placeholder="请输入标题"></el-input>
         </el-form-item>
 
         <el-form-item label="内容" :label-width="formLabelWidth">
-          <el-input v-model="information.content" autocomplete="off"></el-input>
+          <el-input v-model="information.content" autocomplete="off" placeholder="请输入内容"></el-input>
         </el-form-item>
 
       </el-form>

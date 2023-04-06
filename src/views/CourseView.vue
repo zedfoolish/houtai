@@ -63,23 +63,23 @@
         </el-form-item> -->
 
         <el-form-item label="课程分类名称" :label-width="formLabelWidth">
-          <el-input v-model="course.name" autocomplete="off"></el-input>
+          <el-input v-model="course.name" autocomplete="off"  placeholder="请输入课程分类名称"></el-input>
         </el-form-item>
 
         <el-form-item label="课程标题" :label-width="formLabelWidth">
-          <el-input v-model="course.title" autocomplete="off"></el-input>
+          <el-input v-model="course.title" autocomplete="off"  placeholder="请输入课程标题"></el-input>
         </el-form-item>
 
         <el-form-item label="介绍内容" :label-width="formLabelWidth">
-          <el-input v-model="course.content" autocomplete="off"></el-input>
+          <el-input v-model="course.content" autocomplete="off"  placeholder="请输入介绍内容"></el-input>
         </el-form-item>
 
         <el-form-item label="讲师" :label-width="formLabelWidth">
-          <el-input v-model="course.lecturerId" autocomplete="off"></el-input>
+          <el-input v-model="course.lecturerId" autocomplete="off"  placeholder="请输入讲师"></el-input>
         </el-form-item>
 
         <el-form-item label="视频地址" :label-width="formLabelWidth">
-          <el-input v-model="course.resourceUrl" autocomplete="off"></el-input>
+          <el-input v-model="course.resourceUrl" autocomplete="off"  placeholder="请输入视频地址"></el-input>
         </el-form-item>
      
       </el-form>

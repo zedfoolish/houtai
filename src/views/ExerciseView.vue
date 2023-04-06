@@ -1,6 +1,6 @@
 <template>
   <div class="exercise"> 
-    <h1>\exercise</h1>
+    <h1>This is a exercise page</h1>
 
     <!-- 左侧按钮 -->
     <el-row class="leftButton">
@@ -35,35 +35,35 @@
         </el-form-item> -->
 
         <el-form-item label="章节id" :label-width="formLabelWidth">
-          <el-input v-model="exercise.chapterId" autocomplete="off"></el-input>
+          <el-input v-model="exercise.chapterId" autocomplete="off" placeholder="请输入章节id"></el-input>
         </el-form-item>
 
         <el-form-item label="题目" :label-width="formLabelWidth">
-          <el-input v-model="exercise.topic" autocomplete="off"></el-input>
+          <el-input v-model="exercise.topic" autocomplete="off" placeholder="请输入题目"></el-input>
         </el-form-item>
 
         <el-form-item label="正确答案" :label-width="formLabelWidth">
-          <el-input v-model="exercise.correct" autocomplete="off"></el-input>
+          <el-input v-model="exercise.correct" autocomplete="off" placeholder="请输入正确答案"></el-input>
         </el-form-item>
 
         <el-form-item label="选项A" :label-width="formLabelWidth">
-          <el-input v-model="exercise.a" autocomplete="off"></el-input>
+          <el-input v-model="exercise.a" autocomplete="off" placeholder="请输入选项A"></el-input>
         </el-form-item>
 
         <el-form-item label="选项B" :label-width="formLabelWidth">
-          <el-input v-model="exercise.b" autocomplete="off"></el-input>
+          <el-input v-model="exercise.b" autocomplete="off" placeholder="请输入选项B"></el-input>
         </el-form-item>
 
         <el-form-item label="选项C" :label-width="formLabelWidth">
-          <el-input v-model="exercise.c" autocomplete="off"></el-input>
+          <el-input v-model="exercise.c" autocomplete="off" placeholder="请输入选项C"></el-input>
         </el-form-item>
 
         <el-form-item label="选项D" :label-width="formLabelWidth">
-          <el-input v-model="exercise.d" autocomplete="off"></el-input>
+          <el-input v-model="exercise.d" autocomplete="off" placeholder="请输入选项D"></el-input>
         </el-form-item>
 
         <el-form-item label="题库章节" :label-width="formLabelWidth">
-          <el-input v-model="exercise.title" autocomplete="off"></el-input>
+          <el-input v-model="exercise.title" autocomplete="off" placeholder="请输入题库章节"></el-input>
         </el-form-item>
      
       </el-form>

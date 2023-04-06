@@ -30,19 +30,19 @@
         </el-form-item> -->
 
         <el-form-item label="名称" :label-width="formLabelWidth">
-          <el-input v-model="teacher.name" autocomplete="off"></el-input>
+          <el-input v-model="teacher.name" autocomplete="off" placeholder="请输入名称"></el-input>
         </el-form-item>
 
         <el-form-item label="头像地址" :label-width="formLabelWidth">
-          <el-input v-model="teacher.imgUrl" autocomplete="off"></el-input>
+          <el-input v-model="teacher.imgUrl" autocomplete="off"  placeholder="请输入头像地址"></el-input>
         </el-form-item>
 
         <el-form-item label="主讲模块" :label-width="formLabelWidth">
-          <el-input v-model="teacher.skill" autocomplete="off"></el-input>
+          <el-input v-model="teacher.skill" autocomplete="off"  placeholder="请输入主讲模块"></el-input>
         </el-form-item>
 
         <el-form-item label="介绍" :label-width="formLabelWidth">
-          <el-input v-model="teacher.intro" autocomplete="off"></el-input>
+          <el-input v-model="teacher.intro" autocomplete="off"  placeholder="请输入介绍"></el-input>
         </el-form-item>
      
       </el-form>
