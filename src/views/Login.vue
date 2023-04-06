@@ -1,12 +1,16 @@
 <template>
     <div class="login" style="width:100%; height:100%;">
-        <h3> login </h3>
-        <div>
+        <h3 class="loginTitle"> login </h3>
+        <div class="loginForm">
             账号：<el-input v-model="account" placeholder="请输入管理员账号"  clearable></el-input>
             密码：<el-input v-model="pass" placeholder="请输入管理员密码"  clearable show-password></el-input>
-            <el-button @click="run()"> Login </el-button>
+            <!-- <el-button @click="run()"> Login </el-button> -->
+            <el-button class="loginButton" type="primary" @click="run()">Login</el-button>
         </div>
-        
+
+
+
+   
     </div>
 </template>
 
@@ -38,7 +42,7 @@ export default {
 
               if(this.account == response.data.account&&this.pass == response.data.pass){
 
-              this.$router.push('/home');
+              this.$router.push('/teacher');
               this.$message({
                   message: '登录成功',
                   type: 'success'
@@ -83,3 +87,29 @@ export default {
 }
 
 </script>
+
+<style scoped>
+.loginForm {
+  border-radius: 15px;
+  background-clip: padding-box;
+  margin: 120px auto;
+  width: 350px;
+  padding: 15px 35px 15px 35px;
+  background: white;
+  border: 1px solid #eaeaea;
+  box-shadow: 0 0 25px #cac6c6;
+}
+.loginTitle {
+  margin: 0 auto 40px auto;
+  text-align: center;
+}
+.Remember {
+  text-align: left;
+  margin: 0 0 15px 0;
+}
+.loginButton {
+  width: 80%;
+  margin-top: 10px;
+
+}
+</style>

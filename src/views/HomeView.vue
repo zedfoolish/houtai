@@ -8,6 +8,7 @@
     <div class="loader"></div>
     <nav>
 
+    <!-- <router-link to="/home">首页</router-link> | -->
     <router-link to="/teacher">讲师</router-link> |
     <router-link to="/exercise">练习题</router-link>|
     <router-link to="/user">用户</router-link>|
