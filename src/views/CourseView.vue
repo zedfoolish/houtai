@@ -366,13 +366,15 @@ export default {
     open3() {
         this.$message({
           message: '新添成功',
-          type: 'success'
+          type: 'success',
+          duration:2000
         });
       },
     open2() {
         this.$message({
           message: '修改成功',
-          type: 'success'
+          type: 'success',
+          duration:2000
         });
       },
 

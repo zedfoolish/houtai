@@ -3,8 +3,8 @@
     <div class="login" style="width:100%; height:2000px;">
         <h3 class="loginTitle"> login </h3>
         <div class="loginForm">
-            账号：<el-input v-model="account" placeholder="请输入管理员账号"  clearable></el-input>
-            密码：<el-input v-model="pass" placeholder="请输入管理员密码"  clearable show-password></el-input>
+            账号：<el-input v-model="account" placeholder="请输入管理员账号"  clearable class="input"></el-input>
+            密码：<el-input v-model="pass" placeholder="请输入管理员密码"  clearable show-password class="input"></el-input>
             <!-- <el-button @click="run()"> Login </el-button> -->
             <el-button class="loginButton" type="primary" @click="run()">Login</el-button>
         </div>
@@ -56,7 +56,8 @@ export default {
               this.$router.push('/teacher');
               this.$message({
                   message: '登录成功',
-                  type: 'success'
+                  type: 'success',
+                  duration:2000
                 });
               }else{
                 // alert('error')
@@ -70,36 +71,37 @@ export default {
           .catch((error)=>{
             console.log(error);
           })
-
     
-  
-
-
-
-
-          
-
-            
         },
-        //  // 加载动画
-        // openFullScreen2() {
-        //   const loading = this.$loading({
-        //     lock: true,
-        //     text: 'Loading',
-        //     spinner: 'el-icon-loading',
-        //     background: 'rgba(0, 0, 0, 0.7)'
-        //   });
-        //   setTimeout(() => {
-        //     loading.close();
-        //   }, 400);
-        // },
+
+         // 监听回车键执行事件
+        keyDown (e) {
+          // 回车则执行登录方法 enter键的ASCII是13
+          if (e.keyCode === 13) {
+            this.run() // 需要执行的方法方法
+          }
+        },
+ 
+    
     },
+      // 绑定监听事件
+      mounted () {
+        window.addEventListener('keydown', this.keyDown)
+      },
+      // 销毁事件
+      destroyed () {
+        window.removeEventListener('keydown', this.keyDown, false)
+      }
 
 }
 
 </script>
 
 <style scoped>
+.input {
+margin: 5px 0 3px 0;
+
+}
 
 .login{
   background:url("../assets/圣米歇尔山 .jpg");
