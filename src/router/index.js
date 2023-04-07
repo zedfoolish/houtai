@@ -67,15 +67,16 @@ const router = new VueRouter({
 })
 
 
-// // 路由导航守卫
-// router.beforeEach((to, from, next) => {
-//     // 判断是否为其他页面
-//     if (to.path === "/") return next();
-//     // 获取token
-//     let data = window.sessionStorage.getItem("token");
-//     if (!data) return next('/');
-//     next()
+// 路由导航守卫
+router.beforeEach((to, from, next) => {
+    // 判断是否为其他页面
+    if (to.path === "/") return next();
+    // 获取token
+    // let data= window.sessionStorage.getItem("token");
+     let data =JSON.parse(localStorage.getItem('pass'))
+    if (!data) return next('/');
+    next()
 
-// })
+})
 
 export default router

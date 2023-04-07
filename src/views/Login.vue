@@ -1,5 +1,6 @@
 <template>
-    <div class="login" style="width:100%; height:100%;">
+  <div>
+    <div class="login" style="width:100%; height:2000px;">
         <h3 class="loginTitle"> login </h3>
         <div class="loginForm">
             账号：<el-input v-model="account" placeholder="请输入管理员账号"  clearable></el-input>
@@ -12,6 +13,7 @@
 
    
     </div>
+  </div>
 </template>
 
 <script>
@@ -22,7 +24,10 @@ export default {
       return {
         account:'',
         pass:'',
-        user:[],
+        user:{
+          acc:'',
+          pas:'',
+        },
         te:false,
 
 
@@ -32,6 +37,7 @@ export default {
         run(){
           console.log(this.account)
           console.log(this.pass)
+          
 
           axios
           .get("http://8.130.32.153:8090/admins/1")
@@ -39,6 +45,11 @@ export default {
               console.log(response)
               // console.log(response.data.account)
               // console.log(response.data.pass)
+              this.user.acc = response.data.account
+              this.user.pas = response.data.pass
+              console.log("this.user=",this.user);
+              localStorage.setItem("account",JSON.stringify(this.user.acc))
+              localStorage.setItem("pass",JSON.stringify(this.user.pas))
 
               if(this.account == response.data.account&&this.pass == response.data.pass){
 
@@ -89,6 +100,16 @@ export default {
 </script>
 
 <style scoped>
+
+.login{
+  background:url("../assets/圣米歇尔山 .jpg");
+  width:100%;			
+  height:100%;			
+  position:fixed;
+  background-size: auto;
+
+}
+
 .loginForm {
   border-radius: 15px;
   background-clip: padding-box;

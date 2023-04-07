@@ -131,6 +131,10 @@ import axios from "axios"
       handleClick(row) {
         console.log(row);
       }, 
+      getuserinfo(){
+        this.userinfo = JSON.parse(localStorage.getItem('pass'))
+        console.log(this.userinfo)
+      },
       // 加载动画
       openFullScreen2() {
         const loading = this.$loading({
@@ -271,6 +275,9 @@ import axios from "axios"
       },
 
     },
+    created() {
+      this.getuserinfo();
+    },
     mounted(){
       this.openFullScreen2();
       this.getlist();
@@ -286,6 +293,7 @@ import axios from "axios"
       return {
         // 列表展示
         teachers:[],
+        userinfo:{},
         // 新添获取
         teacher:{},
         dialogTableVisible: false,

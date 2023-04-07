@@ -17,7 +17,7 @@
     <router-link to="/course">课程</router-link>
     </nav>
 
-
+    <el-button size="small" style="float:right; " @click="quit()"> quit </el-button>
     <br/> <br/>
 
     <router-view/>
@@ -32,10 +32,27 @@ export default {
   name: 'HomeView',
   components: {
     HelloWorld
-  }
+  },
+
+    data() {
+        return {
+
+        }
+    },
+    methods: {
+          quit() {
+            this.$message({
+                message: '登出成功',
+                duration:1000
+
+            });
+            localStorage.setItem("pass",JSON.stringify(''))
+            this.$router.push("/")
+          },
+    },
+
 }
 </script>
-
 
 <style>
 .loader{
