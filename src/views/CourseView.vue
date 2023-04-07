@@ -248,7 +248,7 @@ export default {
       },
       handleSuccess(res, file) {
           console.log("res.data=",res.data);
-          alert("上传成功");
+          // alert("上传成功");
           this.rem = res.data;
           console.log("rem=",this.rem);
           this.open();
@@ -258,7 +258,7 @@ export default {
       },
       open() {
         // 一键复制
-        this.$alert(this.rem ,'上传视频地址,记得复制一下哟', {
+        this.$alert(this.rem ,'上传成功,上传视频地址,记得复制一下哟', {
           confirmButtonText: '确定',
           callback: action => {
             this.$message({
