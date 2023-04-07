@@ -99,7 +99,7 @@ export default {
 
 <style scoped>
 .input {
-margin: 5px 0 3px 0;
+margin: 5px 0 8px 0;
 
 }
 
