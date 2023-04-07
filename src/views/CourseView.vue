@@ -265,6 +265,7 @@ export default {
               type: 'success ',
               message: "嘟嘟嘟嘟嘟嘟..."
             });
+            location.reload ()
           },
           
         });
