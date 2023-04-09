@@ -74,8 +74,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
     // 判断是否为其他页面
     if (to.path === "/") return next();
-    // 获取token
-    // let data= window.sessionStorage.getItem("token");
+    // 获取管理员密码
      let data =JSON.parse(localStorage.getItem('pass'))
     if (!data) return next('/');
     next()
